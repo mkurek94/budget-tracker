@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 import CreateTransactionDialog from "./_components/CreateTransactionDialog";
+import Overview from "./_components/Overview";
 
 const Dashboard = async () => {
   const user = await currentUser();
@@ -24,7 +25,7 @@ const Dashboard = async () => {
 
   return (
     <div className="h-full bg-background">
-      <div className="border-b bg-card">
+      <div className="border-b bg-card flex justify-center">
         <div className="container flex flex-wrap items-center justify-between gap-6 p-8">
           <p className="text-3xl font-bold">Hello, {user.firstName}! 👋</p>
 
@@ -54,6 +55,7 @@ const Dashboard = async () => {
           </div>
         </div>
       </div>
+      <Overview userSettings={userSettings} />
     </div>
   );
 };

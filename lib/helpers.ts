@@ -1,3 +1,5 @@
+import { Currencies } from "./currencies";
+
 export const DateToUTC = (date: Date) =>
   new Date(
     Date.UTC(
@@ -10,3 +12,13 @@ export const DateToUTC = (date: Date) =>
       date.getMilliseconds()
     )
   );
+
+
+  export const GetFormatterForCurrency = (currency: string) => {
+    const locale = Currencies.find(c => c.value === currency)?.locale;
+
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency
+    })
+  }
