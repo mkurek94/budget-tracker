@@ -20,7 +20,7 @@ const Overview = ({ userSettings }: OverviewProps) => {
   });
   return (
     <>
-      <div className="container flex flex-wrap items-end justify-between gap-2 py-6 mx-auto;">
+      <div className="container flex flex-wrap items-end justify-between gap-2 py-6 mx-auto">
         <h2 className="text-3xl font-bold">Overview</h2>
         <div className="flex items-center gap-3">
           <DateRangePicker

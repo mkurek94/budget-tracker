@@ -40,9 +40,14 @@ import { useTheme } from "next-themes";
 interface CreateCategoryDialogProps {
   type: TransactionType;
   successCallback: (category: Category) => void;
+  trigger?: React.ReactNode;
 }
 
-const CreateCategoryDialog = ({ type, successCallback }: CreateCategoryDialogProps) => {
+const CreateCategoryDialog = ({
+  type,
+  successCallback,
+  trigger,
+}: CreateCategoryDialogProps) => {
   const [open, setOpen] = useState(false);
   const form = useForm<CreateCategorySchema>({
     resolver: zodResolver(CreateCategorySchema),
@@ -98,13 +103,17 @@ const CreateCategoryDialog = ({ type, successCallback }: CreateCategoryDialogPro
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          variant="ghost"
-          className="flex border-separate items-center justify-start rounded-none border-b px-3 py-3 text-muted-foreground"
-        >
-          <PlusSquare className="mr-2 h-4 w-4" />
-          Create new
-        </Button>
+        {trigger ? (
+          trigger
+        ) : (
+          <Button
+            variant="ghost"
+            className="flex border-separate items-center justify-start rounded-none border-b px-3 py-3 text-muted-foreground"
+          >
+            <PlusSquare className="mr-2 h-4 w-4" />
+            Create new
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -135,7 +144,9 @@ const CreateCategoryDialog = ({ type, successCallback }: CreateCategoryDialogPro
                   <FormControl>
                     <Input placeholder="Category" {...field} />
                   </FormControl>
-                  <FormDescription>This is how your category will appear in the app</FormDescription>
+                  <FormDescription>
+                    This is how your category will appear in the app
+                  </FormDescription>
                 </FormItem>
               )}
             />
