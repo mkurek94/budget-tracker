@@ -65,7 +65,7 @@ const CategoryList = ({ type }: { type: TransactionType }) => {
   const dataAvailable = categoriesQuery.data && categoriesQuery.data.length > 0;
 
   return (
-    <SkeletonWrapper isLoading={categoriesQuery.isFetching}>
+    <SkeletonWrapper isLoading={categoriesQuery.isFetching}> 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center justify-between gap-2">
